@@ -9,97 +9,23 @@
     <meta name="author" content="RJ">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--styling-->
-    <!-- <link href="static/css/material-icons.css" rel="stylesheet"> -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-    <!-- <link href="static/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <!-- <link href="static/css/vuetify.min.css" rel="stylesheet"> -->
-    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/css/material-icons.css" rel="stylesheet">
+    <link href="./static/css/vuetify.min.css" rel="stylesheet">
     <link href="static/custom/kdsu.css" rel="stylesheet">
     <!--scripts-->
-    <!-- <script src="static/js/tether.min.js" type="text/javascript"></script>
-        <script src="static/js/jquery-3.1.1.slim.min.js" type="text/javascript"></script>
-        <script src="static/js/bootstrap.min.js" type="text/javascript"></script> -->
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <!-- <script src="static/js/vue.js" type="text/javascript"></script> -->
-        <script src="https://unpkg.com/vue/dist/vue.js"></script>
-        <!-- <script src="static/js/vuetify.js" type="text/javascript"></script> -->
-        <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
-        <script defer src="static/custom/kdsu.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="app">
             <v-app>
-                <!-- <nav class="navbar navbar-toggleable-md" id="NAVBAR">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavItems" aria-controls="navbarNavItems" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img src="/static/img/Color Logo No Text.png" width="38" height="45" alt="KDSU Logo">
-                    </a>   
-                    <div class="collapse navbar-collapse" id="navbarNavItems">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" @click="navTo(h.id)">test</a>
-                            </li>
-                            <li class="nav-item" v-for="h in headers">
-                                <a class="nav-link" @click="navTo(h.id)">{{h.text}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav> -->
-                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Disabled</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <v-container id="MAIN">
-                    <v-layout row>
-                        <v-flex xs10 offset-xs1 id="CONTENT">
-                            <v-container id="RADIO">
-                                <v-layout row>
-                                    <v-flex xs12>
-                                        RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO 
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                            <v-container id="PODCASTS">
-                                <v-layout row>
-                                    <v-flex xs12>
-                                        PODCASTS PODCASTS PODCASTS PODCASTS PODCASTS PODCASTS PODCASTS PODCASTS PODCASTS
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                            <v-container id="ABOUT">
-                                <v-layout row>
-                                    <v-flex xs12>
-                                        ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                        </v-flex>
-                    </v-layout>
-                </v-container>
+                
             </v-app>
-        </div>  
+        </div>
+        <script src="./static/js/jquery-3.1.1.slim.min.js" type="text/javascript"></script>
+        <script src="./static/js/tether.min.js" type="text/javascript"></script>
+        <script src="./static/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="./static/js/vue.js" type="text/javascript"></script>
+        <script src="./static/js/vuetify.js" type="text/javascript"></script>
+        <script src="static/custom/kdsu.js" type="text/javascript"></script>  
     </body>
     </html>
