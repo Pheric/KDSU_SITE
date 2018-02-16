@@ -8,7 +8,12 @@
     background-color: #FCE102;
 }
 
+.link {
+    color:#0054a4!important;
+}
+
 #MAIN {
+    padding-top: 4rem;
     background: linear-gradient(#FCE102, white);
 }
 
@@ -19,18 +24,25 @@
     font-size: 5rem;
 }
 
+.main-header-subtext {
+    background-color: white;
+    color: #0054a4;
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
 .nav-link {
-    background-color: #FCE102;
+    background-color: #0054a4;
     border: solid #0054a4;
     border-radius: 1rem;
-    color:#0054a4!important;
+    color:white!important;
     transition: background-color 5s;
     transition: color .25s;
 }
 
 .nav-link:hover {
-    background-color: #0054a4;
-    color:white!important;
+    background-color: white;
+    color:#0054a4!important;
     transition: background-color 5s;
     transition: color .25s;
 }

@@ -2,12 +2,16 @@ var v = new Vue({
     el: '#app',
     data: function() {
         return {
+            currentVideo: 'Trailers',
             headers: [
-                {text:"Radio", id:"RADIO"},
+                {text:"Home", id:"HOME"},
+                {text:"About", id:"ABOUT"},
                 {text:"Podcasts", id:"PODCASTS"},
-                {text:"About", id:"ABOUT"}
+                {text:"Radio", id:"RADIO"}
             ],
-            navBarHeight: 0
+            navBarHeight: 0,
+            videoNames: ['The Disney Machine', 'Trailers'],
+            videos: {'The Disney Machine':'QA7B_SQ9aLo', 'Trailers':'Iv7vqQGgeE4'}
         }
     },
     methods: {
@@ -21,13 +25,14 @@ var v = new Vue({
             }
         },
         navTo: function(link) {
-            window.scroll(0, this.findPos(document.getElementById(link)) - this.navBarHeight);
+            window.scroll(0, this.findPos(document.getElementById(link)) - 2 * this.navBarHeight);
+            document.getElementById("navbar-icon").click();
         },
         navToTop: function() {
             window.scrollTo(0, 0)
         }
     },
     mounted: function() {
-        //this.navBarHeight = document.getElementById("NAVBAR").clientHeight;
+        this.navBarHeight = document.getElementById("kdsu-nav").clientHeight;
     }
 });
