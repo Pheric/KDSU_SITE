@@ -1,8 +1,60 @@
-#NAVBAR {
-    border-bottom: solid #FCE102;
+#CONTENT {
+    background-color: #0054a4;
+    border-radius: 1rem;
+}
+
+#kdsu-nav {
+    border-bottom: solid #0054a4;
+    background-color: #FCE102;
+}
+
+#MAIN {
+    background: linear-gradient(#FCE102, white);
+}
+
+.main-header {
     background-color: white;
+    color: #FCE102;
+    border-radius: 1rem;
+    font-size: 5rem;
 }
 
 .nav-link {
-    color: #FCE102!important;
+    background-color: #FCE102;
+    border: solid #0054a4;
+    border-radius: 1rem;
+    color:#0054a4!important;
+    transition: background-color 5s;
+    transition: color .25s;
+}
+
+.nav-link:hover {
+    background-color: #0054a4;
+    color:white!important;
+    transition: background-color 5s;
+    transition: color .25s;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 84, 164, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    border-color: #FCE102;
+    transition: border-color 2s;
+    outline:none;
+}
+
+.navbar-toggler:active {
+    outline:none;
+}
+
+.navbar-toggler:focus {
+    outline:none;
+}
+
+.navbar-toggler:hover {
+    border-color: #0054a4;
+    transition: border-color 1s;
+    outline:none;
 }
