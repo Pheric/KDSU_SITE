@@ -4,10 +4,10 @@ var v = new Vue({
         return {
             currentVideo: 'Trailers',
             headers: [
-                {text:"Home", id:"HOME"},
-                {text:"About", id:"ABOUT"},
-                {text:"Podcasts", id:"PODCASTS"},
-                {text:"Radio", id:"RADIO"}
+                {text:"Home", id:"HOME", "no": 0},
+                {text:"About", id:"ABOUT", "no": 1},
+                {text:"Podcasts", id:"PODCASTS", "no": 2},
+                {text:"Radio", id:"RADIO", "no": 3}
             ],
             navBarHeight: 0,
             videoNames: ['The Disney Machine', 'Trailers'],
@@ -25,7 +25,7 @@ var v = new Vue({
             }
         },
         navTo: function(link) {
-            window.scroll(0, this.findPos(document.getElementById(link)) - 2 * this.navBarHeight);
+            window.scroll(0, this.findPos(document.getElementById(link)) - this.navBarHeight);
             document.getElementById("navbar-icon").click();
         },
         navToTop: function() {
