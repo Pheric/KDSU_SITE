@@ -6,11 +6,12 @@ import COLORSCHEME from "../ColorScheme"
 import ContentCard from "../ContentCard";
 import kdsuLogo from "../kdsuLogo.png"
 // import ServerURL from "../ServerURL"
-// import About from "./About";
+import About from "./About"
+
+import RadioPlayer from "../RadioPlayer"
 
 
 class Home extends React.Component {
-
     public render() {
         const componentWrapperStyle: React.CSSProperties = {
             backgroundColor: COLORSCHEME.primaryLight,
@@ -29,23 +30,14 @@ class Home extends React.Component {
                             <img alt="logo" height="1336" src={kdsuLogo} width="1136" style={{ display: "inline-block", maxHeight: 1136, maxWidth: 1336, height: "auto", width: "15vw" }} />
                         </ShadowBoxing>
                         <ShadowBoxing level={4} style={{ alignItems: "center", borderRadius: "2.5rem", justifyContent: "center", display: "flex", flexFlow: "row wrap", backgroundColor: COLORSCHEME.secondary, marginTop: "1rem", padding: "1rem" }}>
-                            <div style={{ color: COLORSCHEME.secondaryText, fontWeight: "bold", textAlign: "center", width: "100%" }}>
+                            <div style={{ color: COLORSCHEME.secondaryText, fontWeight: "bold", paddingBottom: "1rem", textAlign: "center", width: "100%" }}>
                                 Listen Live
                             </div>
-                            <div style={{ display: "flex", justifyContent: "center", paddingTop: ".5rem", width: "100%" }}>
-                                <audio controls={true} src={`http://kdsu.net:8000/live`} />
-                            </div>
+                            <RadioPlayer />
                         </ShadowBoxing>
                     </div>
                 </div>
-                {/* <About /> */}
-                <ContentCard ContentCardBottomLinks={[{ external: false, route: "/contact", text: "Contact" }]} title="About">
-                    <div>
-                        KDSU is the <span style={{ fontWeight: "bold" }}> student lead </span> radio organization at Dakota State University.
-
-                        We do live events, on campus radio, as well as online radio.
-                    </div>
-                </ContentCard>
+                <About />
             </div>
         );
     }

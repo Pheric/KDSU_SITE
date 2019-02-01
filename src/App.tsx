@@ -1,5 +1,8 @@
 import * as React from "react";
 
+import COLORSCHEME from "./ColorScheme"
+import kdsuLogo from "./kdsuLogo.png";
+
 import About from "./NavagationComponents/About"
 import Contact from "./NavagationComponents/Contact"
 import Home from "./NavagationComponents/Home"
@@ -7,15 +10,11 @@ import Radio from "./NavagationComponents/Radio"
 // import Requests from "./NavagationComponents/Requests";
 import Youtube from "./NavagationComponents/Youtube";
 
-import COLORSCHEME from "./ColorScheme"
-
-import kdsuLogo from "./kdsuLogo.png";
-
 import { faBars, faTimesCircle } from "@fortawesome/pro-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Route, Switch } from 'react-router'
 import { Link } from "react-router-dom"
-import SideBarLink from "./SideBarLink";
+import SideBarLink from "./SideBarLink"
 
 interface IAppState {
     amHome: boolean
@@ -46,9 +45,10 @@ class App extends React.Component<{}, IAppState> {
         { route: "/about", text: "About" },
         { route: "/contact", text: "Contact" },
         { route: "/radio", text: "Radio" },
-        { route: "/youtube", text: "Youtube/Podcasts" },
+        { route: "/youtube", text: "Youtube/ Podcasts" },
         // { route: "/requests", text: "Requests" },
     ]
+
     public constructor(props: any) {
         super(props)
 
@@ -84,8 +84,6 @@ class App extends React.Component<{}, IAppState> {
             width: "100%",
         }
 
-        const navYSize = 90 / this.sideBarLinks.length;
-
         return (
             <div className="App" style={{ backgroundColor: COLORSCHEME.primaryLight, minHeight: "100vh", }}>
                 <header className="App-header" style={{ alignItems: "center", backgroundColor: COLORSCHEME.primary, display: "flex", justifyContent: "space-between", height: "10vh" }}>
@@ -105,7 +103,7 @@ class App extends React.Component<{}, IAppState> {
                     </div>
                     <div style={sideBarLinksContainerStyle}>
                         {this.sideBarLinks.map((sideBarLink, index) => (
-                                <SideBarLink action={this.closeSideBar} hover={{ backgroundColor: COLORSCHEME.primaryDark }} key={index} normal={{ backgroundColor: COLORSCHEME.primaryLight }} route={sideBarLink.route} navYSize={navYSize} >
+                                <SideBarLink action={this.closeSideBar} hover={{ backgroundColor: COLORSCHEME.primaryDark }} key={index} normal={{ backgroundColor: COLORSCHEME.primaryLight }} route={sideBarLink.route} >
                                     {sideBarLink.text}
                                 </SideBarLink>
                             )

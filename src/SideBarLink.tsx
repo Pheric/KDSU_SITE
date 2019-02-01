@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+
 import COLORSCHEME from "./ColorScheme";
 
 interface ISideBarLinkProps {
@@ -8,7 +9,6 @@ interface ISideBarLinkProps {
     normal: React.CSSProperties
     hover: React.CSSProperties
     route: string
-    navYSize: number
 }
 
 interface ISideBarLinkState {
@@ -23,18 +23,19 @@ class SideBarLink extends React.Component<ISideBarLinkProps, ISideBarLinkState> 
         this.handlePointerLeave = this.handlePointerLeave.bind(this)
 
         this.state = {
-            hover: false
+            hover: false,
         }
     }
 
     public render() {
-        let linkStyle: React.CSSProperties =
-        {
+        let linkStyle: React.CSSProperties = {
             alignItems: "center",
             color: COLORSCHEME.primaryText,
             display: "flex",
-            fontSize: `${this.props.navYSize * .5}vh`,
+            fontSize: "3rem",
+            flex: 1,
             justifyContent: "center",
+            textAlign: "center",
             textDecoration: "none",
             ...this.props.normal,
         }
@@ -44,7 +45,7 @@ class SideBarLink extends React.Component<ISideBarLinkProps, ISideBarLinkState> 
         }
 
         return (
-            <Link onPointerUp={this.props.action} onPointerEnter={this.handlePointerEnter} onPointerOut={this.handlePointerLeave} style={linkStyle} to={this.props.route}>
+            <Link onPointerUp={this.props.action} onPointerEnter={this.handlePointerEnter} onPointerLeave={this.handlePointerLeave} style={linkStyle} to={this.props.route}>
                 <span>
                     {this.props.children}
                 </span>
@@ -53,16 +54,12 @@ class SideBarLink extends React.Component<ISideBarLinkProps, ISideBarLinkState> 
     }
 
     private handlePointerEnter() {
-        // tslint:disable-next-line
-        console.log("enter")
         this.setState({
             hover: true
         })
     }
 
     private handlePointerLeave() {
-        // tslint:disable-next-line
-        console.log("exit")
         this.setState({
             hover: false
         })
