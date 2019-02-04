@@ -6,7 +6,7 @@ services:
     expose:
       - "80"
     ports:
-      - "8003:8001"
+      - "80:8001"
     networks:
       - kdsu_network
     restart: always
