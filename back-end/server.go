@@ -233,7 +233,7 @@ func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
 			} else {
 				newSongTitle := icecastResponseJSON.Icestats.Source.Title
 
-				if newSongTitle !== {
+				if newSongTitle != "" {
 					rSTH.setSongTitle(newSongTitle)
 				} else {
 					rSTH.setSongTitle("Stream Offline 🔌")
