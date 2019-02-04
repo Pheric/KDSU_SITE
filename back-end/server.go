@@ -647,11 +647,11 @@ func main() {
 		requestsWebsocket.HandleRequest(c.Writer, c.Request)
 	})
 
-	// radioSongHandler := getNewRadioSongTitleHandler()
+	radioSongHandler := getNewRadioSongTitleHandler()
 
-	// httpRouter.GET("/ws/radio-player", func(c *gin.Context) {
-	// 	radioSongHandler.wsHandler.HandleRequest(c.Writer, c.Request)
-	// })
+	httpRouter.GET("/ws/radio-player", func(c *gin.Context) {
+		radioSongHandler.wsHandler.HandleRequest(c.Writer, c.Request)
+	})
 
 	api := httpRouter.Group("/api")
 
