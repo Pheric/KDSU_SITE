@@ -33,6 +33,8 @@ class Youtube extends React.Component<{}, IYoutubeState> {
         width: 100%;
     `
 
+    private playerRef: React.RefObject<HTMLDivElement>
+
     private readonly SearchInput = styled.input`
         grid-area: search;
         background-color: ${COLORSCHEME.primary};
@@ -96,6 +98,8 @@ class Youtube extends React.Component<{}, IYoutubeState> {
             youtubeVideos: []
         }
 
+        this.playerRef = React.createRef<HTMLDivElement>()
+
         this.getYoutubeVideos()
     }
 
@@ -108,7 +112,7 @@ class Youtube extends React.Component<{}, IYoutubeState> {
 
                     return (
                         <this.YoutubeComponentDiv>
-                            <this.PlayerDiv>
+                            <this.PlayerDiv ref={this.playerRef}>
                                 {((youtubeVideo: YoutubeVideo) => {
                                     return <YoutubeVideoPlayer
                                         description={youtubeVideo.snippet.description}
@@ -165,7 +169,7 @@ class Youtube extends React.Component<{}, IYoutubeState> {
             }
 
             // Sleep for two seconds then try again
-            await new Promise(() => setTimeout(() => 2000))
+            await new Promise(resolve => setTimeout(resolve, 2000))
         }
     }
 
@@ -179,7 +183,8 @@ class Youtube extends React.Component<{}, IYoutubeState> {
             selectedIndex: youtubeVideo.originalIndex,
         })
 
-        window.scrollTo(0, 0)
+        if (this.playerRef.current !== null)
+            window.scrollTo(0, this.playerRef.current.offsetTop)
     }
 }
 
