@@ -178,6 +178,8 @@ class Youtube extends React.Component<{}, IYoutubeState> {
             selectedID: youtubeVideo.id,
             selectedIndex: youtubeVideo.originalIndex,
         })
+
+        window.scrollTo(0, 0)
     }
 }
 

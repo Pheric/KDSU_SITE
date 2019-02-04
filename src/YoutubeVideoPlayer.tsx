@@ -24,8 +24,8 @@ const YoutubeVideoPlayer = (props: YoutubePlayerProps) => {
         <ShadowBoxing level={4} style={{ backgroundColor: COLORSCHEME.primary, height: "100%", width: "100%" }}>
             <div style={{ padding: "1rem" }}>
                 <YoutubeVideoPlayerDiv>
-                    <div style={{gridArea: "youtubeVideo"}}>
-                        <iframe allowFullScreen style={{ border: 0, height: "100%", width: "100%" }} src={`https://www.youtube.com/embed/${props.id}`} />
+                    <div style={{gridArea: "youtubeVideo", height: 0, paddingBottom: "56.25%",  position: "relative" }}>
+                        <iframe allowFullScreen style={{ border: 0, height: "100%", left: 0, position: "absolute", top: 0, width: "100%" }} src={`https://www.youtube.com/embed/${props.id}`} />
                     </div>
                     <span style={{gridArea: "title"}}>
                         {props.title}

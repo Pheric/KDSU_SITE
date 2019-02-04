@@ -51,7 +51,6 @@ function clickWrapper(youtubeVideo: YoutubeVideo, clickHandler: (youtubeVideo: Y
 }
 
 const YoutubeVideoPlayer = (props: YoutubePlayerProps) => {
-    
     return (
         <div onClick={clickWrapper(props.video, props.clickHandler, props.selected)}>
             <ShadowBoxing level={4} style={ (props.selected) ? {border: `dotted ${COLORSCHEME.primaryDark}`, ...shadowboxingStyle} : {cursor: "pointer", ...shadowboxingStyle}}>
