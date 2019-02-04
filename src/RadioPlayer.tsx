@@ -101,16 +101,14 @@ class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
         let radioPlayerWebsocket: WebSocket = new WebSocket(wsConnectURL)
 
         radioPlayerWebsocket.onerror = this.handleRadioPlayerWebsocketError
+        radioPlayerWebsocket.onmessage = this.handleRadioPlayerWebsocketMessage
 
         radioPlayerWebsocket.onopen = () => {
-            if (radioPlayerWebsocket.readyState === 0) {
-                radioPlayerWebsocket.onclose = this.handleRadioPlayerWebsocketClose
-                radioPlayerWebsocket.onmessage = this.handleRadioPlayerWebsocketMessage
+            radioPlayerWebsocket.onclose = this.handleRadioPlayerWebsocketClose
 
-                this.setState({
-                    songConnection: radioPlayerWebsocket,
-                })
-            }
+            this.setState({
+                songConnection: radioPlayerWebsocket,
+            })
         }
 
         return radioPlayerWebsocket
