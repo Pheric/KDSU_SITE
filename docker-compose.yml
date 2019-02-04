@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  kdsu-webserver:
+    build: .
+    expose:
+      - "80"
+    ports:
+      - "8003:8001"
+    networks:
+      - kdsu_network
+    restart: always
+    volumes:
+      - "./data:/app/data"
+      - "./projects:/app/projects"
+      - "./static:/app/static"
+      - "./templates:/app/templates"
+
+  icecast-stream:
+    build: ./icecast
+    ports:
+      - 8000:8000
+    networks:
+      - kdsu_network
+    restart: always
+
+networks:
+  kdsu_network:
+    name: kdsu_backend_network
+

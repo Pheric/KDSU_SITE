@@ -1,0 +1,10 @@
+node_modules/
+icecast/
+KDSU\ Logo\ Files/
+read_me_images/
+
+docker-compose.yml
+.gitignore
+README*
+todo.txt
+tslint.json

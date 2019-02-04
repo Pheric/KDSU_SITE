@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import styled from 'styled-components'
+import serverURL from "./ServerURL";
 
 
 interface IRadioPlayerState {
@@ -8,7 +9,7 @@ interface IRadioPlayerState {
     songConnection?: WebSocket
 }
 
-const wsConnectURL: string = "ws://kdsu.net/ws/radio-player"
+const wsConnectURL: string = `ws://${serverURL}/ws/radio-player`
 
 class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
     private _ismounted: boolean = false
@@ -25,6 +26,9 @@ class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
             songTitle: "",
             songConnection: undefined,
         }
+
+        // Initialize the WebSocket so that the song title can stay updated
+        this.getNewRadioPlayerWebsocket()
     }
 
     public componentDidMount() {
@@ -44,6 +48,9 @@ class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
 
         let TitleSpan
 
+        // TitleSpan is the span representing the area below the audio tag,
+        // it would be a song title if the connection was established (state.songTitle !== ""),
+        // or a loading icon if the connection is being established (state.songTitle === "")
         if (this.state.songTitle !== "")
             TitleSpan = styled.span`
                 grid-area: song;
@@ -75,10 +82,6 @@ class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
                     border-color: #000 transparent #000 transparent;
                     animation: loadingRing 1.2s linear infinite;
                 }`
-
-        // Initialize the WebSocket so that the song title can stay updated
-        if (this.state.songConnection === undefined)
-            this.getNewRadioPlayerWebsocket()
 
         return (
                 <WrappingDiv>

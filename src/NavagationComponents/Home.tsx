@@ -3,9 +3,7 @@ import * as React from "react";
 import ShadowBoxing from "shadowboxing"
 import coachella from "../coachella.jpg"
 import COLORSCHEME from "../ColorScheme"
-import ContentCard from "../ContentCard";
 import kdsuLogo from "../kdsuLogo.png"
-// import ServerURL from "../ServerURL"
 import About from "./About"
 
 import RadioPlayer from "../RadioPlayer"

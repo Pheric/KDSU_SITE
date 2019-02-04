@@ -1,3 +1,3 @@
-const serverURL = window.location.port === "3000" ? `http://localhost:${process.env.REACT_APP_SERVER_PORT}` : window.location.origin
+const serverURL = window.location.port === "3000" ? `localhost:8001` : `kdsu.net`
 
 export default serverURL

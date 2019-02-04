@@ -18,7 +18,7 @@ class Requests extends React.Component {
     public constructor(props: any) {
         super(props)
 
-        // this.ws = new WebSocketBuilder(`${ServerURL}`, () => {
+        // this.ws = new WebSocketBuilder(`ws://${ServerURL}`, () => {
 
         // })
 

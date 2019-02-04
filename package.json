@@ -11,6 +11,7 @@
     "@fortawesome/pro-regular-svg-icons": "^5.1.0-11",
     "@fortawesome/pro-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
+    "axios": "^0.18.0",
     "firebase": "^5.4.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -31,6 +32,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/jest": "^23.3.12",
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",

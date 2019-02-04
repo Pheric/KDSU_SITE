@@ -13,13 +13,22 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.npmrc
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-back-end/static/*
-info.json
+back-end/static/
+
+# secrets
+.npmrc
+*.json
+*.xml
+
 server
 server.exe
+
+!package.json
+!package-lock.json
+!tsconfig.json
+!tslint.json
