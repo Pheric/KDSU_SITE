@@ -148,6 +148,12 @@ func (rSTH *radioSongTitleHandler) getSongTitle() string {
 
 func (rSTH *radioSongTitleHandler) setSongTitle(songTitle string) {
 	rSTH.mutex.Lock()
+	defer rSTH.mutex.Unlock()
+
+	// Don't send an update if the song title is the same
+	if rSTH.Title == songTitle {
+		return
+	}
 
 	rSTH.Title = songTitle
 
@@ -157,8 +163,6 @@ func (rSTH *radioSongTitleHandler) setSongTitle(songTitle string) {
 	// assuring that if this were to be called in parallel that all websocket
 	// connections would recieve the data in a syncronous manner
 	rSTH.wsHandler.Broadcast([]byte(songTitle))
-
-	rSTH.mutex.Unlock()
 }
 
 func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
