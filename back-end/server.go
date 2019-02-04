@@ -126,7 +126,7 @@ func getNewRadioSongTitleHandler() *radioSongTitleHandler {
 	nRSTH := &radioSongTitleHandler{
 		wsHandler: melody.New(),
 		mutex:     &sync.Mutex{},
-		Title:     "dest",
+		Title:     "Stream Offline 🔌",
 	}
 
 	nRSTH.wsHandler.HandleConnect(func(s *melody.Session) {
@@ -166,15 +166,7 @@ func (rSTH *radioSongTitleHandler) setSongTitle(songTitle string) {
 }
 
 func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
-	var (
-		err             error
-		icecastRequest  *http.Request
-		icecastResponse *http.Response
-		requestContext  context.Context
-		cancelFunc      context.CancelFunc
-	)
-
-	icecastResponseJSON := struct {
+	type icecastStatsJSON struct {
 		Icestats struct {
 			Admin              string `json:"admin"`
 			Host               string `json:"host"`
@@ -202,7 +194,21 @@ func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
 				Dummy              interface{} `json:"dummy"`
 			} `json:"source"`
 		} `json:"icestats"`
-	}{}
+	}
+
+	var (
+		err                 error
+		icecastRequest      *http.Request
+		icecastResponse     *http.Response
+		icecastResponseJSON icecastStatsJSON
+		requestContext      context.Context
+		cancelFunc          context.CancelFunc
+		// NOSOURCE acts as a fully blank instantiation of the Source stuct
+		// to check if there is a stream source and determine whether we are waiting
+		// for the icecast stream server to make the stream metadata (song title) available
+		// or if the stream is offline altogether
+		NOSOURCE = (icecastStatsJSON{}).Icestats.Source
+	)
 
 	responseErrorChannel := make(chan error)
 
@@ -240,15 +246,28 @@ func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
 			}
 		case err = <-responseErrorChannel:
 			if err != nil {
+				// If we get an error back from the request to the icecast stream,
+				// that (almost always) indicates that the icecast stream server itself
+				// is not even online
 				fmt.Println("Response Err:", err)
 			} else {
-				newSongTitle := icecastResponseJSON.Icestats.Source.Title
-
-				if newSongTitle != "" {
-					rSTH.setSongTitle(newSongTitle)
-				} else {
+				// If the icecast stream server responds but there is no stream source
+				// (meaning the stream from campus is not being streamed) it will be blank
+				if icecastResponseJSON.Icestats.Source == NOSOURCE {
 					rSTH.setSongTitle("Stream Offline 🔌")
+				} else {
+					newSongTitle := icecastResponseJSON.Icestats.Source.Title
+
+					// If the icecastStatsJSON.Icestats.Source field in the JSON response is
+					// not blank, but the song title is an empty string "", then the stream
+					// has yet to assemble the stream metadata
+					if newSongTitle != "" {
+						rSTH.setSongTitle(newSongTitle)
+					} else {
+						rSTH.setSongTitle("Waiting for Stream Metadata ⏱")
+					}
 				}
+
 			}
 		}
 
@@ -666,7 +685,7 @@ func main() {
 
 	radioSongHandler := getNewRadioSongTitleHandler()
 
-	httpRouter.GET("/ws/radio-player", func(c *gin.Context) {
+	httpRouter.GET("/ws/song-title-updater", func(c *gin.Context) {
 		radioSongHandler.wsHandler.HandleRequest(c.Writer, c.Request)
 	})
 
