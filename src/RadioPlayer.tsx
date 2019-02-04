@@ -131,16 +131,10 @@ class RadioPlayer extends React.Component<{}, IRadioPlayerState> {
 
     handleRadioPlayerWebsocketClose() {
         if (this._ismounted) {
-            if (this.state.songTitle !== "") {
-                this.setState({
-                    songConnection: this.getNewRadioPlayerWebsocket(),
-                })
-            } else {
-                this.setState({
-                    songConnection: this.getNewRadioPlayerWebsocket(),
-                    songTitle: "Reconnecting 🔌"
-                })
-            }
+            this.setState({
+                songConnection: this.getNewRadioPlayerWebsocket(),
+                songTitle: "Reconnecting 🔌"
+            })
         }
     }
 }

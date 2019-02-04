@@ -231,7 +231,13 @@ func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
 			if err != nil {
 				fmt.Println("Response Err:", err)
 			} else {
-				rSTH.setSongTitle(icecastResponseJSON.Icestats.Source.Title)
+				newSongTitle := icecastResponseJSON.Icestats.Source.Title
+
+				if newSongTitle !== {
+					rSTH.setSongTitle(newSongTitle)
+				} else {
+					rSTH.setSongTitle("Stream Offline 🔌")
+				}
 			}
 		}
 

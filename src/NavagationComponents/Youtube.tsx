@@ -148,7 +148,7 @@ class Youtube extends React.Component<{}, IYoutubeState> {
 
         while (err) {
             try {
-                youtubeVideosResponse = await axios.get(`${serverURL}/api/youtube/uploads`)
+                youtubeVideosResponse = await axios.get(`http://${serverURL}/api/youtube/uploads`)
 
                 self.setState({
                     selectedID: youtubeVideosResponse.data[0].id,
