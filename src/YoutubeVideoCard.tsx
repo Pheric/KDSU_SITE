@@ -18,7 +18,7 @@ interface YoutubePlayerProps {
 const VideoCardContentDiv = styled.div`
     display: grid;
     height: 100%;
-    width: 100%;
+    padding: 1rem;
 
     grid-row-gap: 1rem;
     grid-template-areas: "thumbnail" "title" "description";
@@ -35,6 +35,13 @@ const VideoCardContentDiv = styled.div`
         justify-items: stretch;
     }
 `
+
+const shadowboxingStyle: React.CSSProperties = {
+    backgroundColor: COLORSCHEME.secondary,
+    width: "100%"
+}
+
+
 function clickWrapper(youtubeVideo: YoutubeVideo, clickHandler: (youtubeVideo: YoutubeVideo) => void, selected: boolean): () => void {
     return () => {
         if (!selected) {
@@ -44,9 +51,10 @@ function clickWrapper(youtubeVideo: YoutubeVideo, clickHandler: (youtubeVideo: Y
 }
 
 const YoutubeVideoPlayer = (props: YoutubePlayerProps) => {
+    
     return (
-        <div onClick={clickWrapper(props.video, props.clickHandler, props.selected)} style={ (props.selected) ? {border: `dotted ${COLORSCHEME.secondaryDark}`} : {cursor: "pointer"}}>
-            <ShadowBoxing level={4} style={{ backgroundColor: COLORSCHEME.secondary, padding: "1rem" }}>
+        <div onClick={clickWrapper(props.video, props.clickHandler, props.selected)}>
+            <ShadowBoxing level={4} style={ (props.selected) ? {border: `dotted ${COLORSCHEME.primaryDark}`, ...shadowboxingStyle} : {cursor: "pointer", ...shadowboxingStyle}}>
                 <VideoCardContentDiv>
                     <img src={props.video.snippet.thumbnails.medium.url} style={{ gridArea: "thumbnail", height: "auto", width: "100%" }} />
                     <span style={{ gridArea: "title", textAlign: "center" }}>
