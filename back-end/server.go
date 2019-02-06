@@ -213,6 +213,16 @@ func (rSTH *radioSongTitleHandler) handleUpdatingSongTitle() {
 	responseErrorChannel := make(chan error)
 
 	for {
+		// Initialize to a blank struct to assure that response data is not affected by previous responses like it
+		// would if we did not. For example:
+		// If a request is made while the stream is online, the icecastStatsJSON.Icestats.Source struct will not be blank
+		// and will have metadata about the stream like the bitrate and song title, however, if the stream then goes offline,
+		// the response JSON from the Icecast stream won't even include the "source" field (which would have the metadata
+		// about the stream) in the "icestats" JSON, thus the old data from the previous request when the stream was online
+		// will not be overwritten by the new request, resulting in a false negative later when we are trying to check if
+		// the stream is online or not -> icecastResponseJSON.Icestats.Source == NOSOURCE will be false when it should be true
+		icecastResponseJSON = icecastStatsJSON{}
+
 		requestContext, cancelFunc = context.WithDeadline(context.Background(), time.Now().Add(5*time.Second))
 
 		go func() {
