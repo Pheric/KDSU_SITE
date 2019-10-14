@@ -13,6 +13,11 @@ services:
 
   icecast-stream:
     build: ./icecast
+    environment:
+      - ICECAST_SOURCE_PASSWORD=aaa
+      - ICECAST_ADMIN_PASSWORD=test
+      - ICECAST_PASSWORD=test
+      - ICECAST_RELAY_PASSWORD=test
     ports:
       - 8000:8000
     networks:
@@ -22,4 +27,3 @@ services:
 networks:
   kdsu_network:
     name: kdsu_backend_network
-

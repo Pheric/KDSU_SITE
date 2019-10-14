@@ -1,5 +1,22 @@
-FROM moul/icecast
+FROM alpine:3.10
+
+ARG user=icecast
+ARG group=icecast
+
+ENV ICECAST_VERSION 2.4.4-r1
+
+RUN apk -q update \
+    && apk -q --no-progress add icecast="$ICECAST_VERSION" \
+    && rm -rf /var/cache/apk/*
+
+RUN mkdir -p /var/log/icecast2 \
+    && chown -R ${user}:${group} /usr/share/icecast \
+    && chown -R ${user}:${group} /var/log/icecast2
 
 EXPOSE 8000
 
-COPY ./icecast.xml /etc/icecast2/
+USER ${user}
+
+COPY icecast.xml /usr/share/icecast/icecast.xml
+
+CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
