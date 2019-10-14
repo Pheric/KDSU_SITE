@@ -4,9 +4,7 @@ services:
   kdsu-webserver:
     build: .
     expose:
-      - "80"
-    ports:
-      - "80:8001"
+      - "8001"
     networks:
       - kdsu_network
     restart: always
@@ -20,6 +18,15 @@ services:
       - ICECAST_RELAY_PASSWORD=test
     ports:
       - 8000:8000
+    networks:
+      - kdsu_network
+    restart: always
+
+  kdsu-proxy:
+    build: ./kdsu-proxy
+    ports:
+      - "80:80"
+      - "443:443"
     networks:
       - kdsu_network
     restart: always

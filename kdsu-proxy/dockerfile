@@ -1,0 +1,11 @@
+FROM nginx:latest
+
+EXPOSE 80
+EXPOSE 443
+
+#COPY /etc/letsencrypt/options-ssl-nginx.conf /etc/nginx/files/options-ssl-nginx.conf;
+#COPY /etc/letsencrypt/live/kdsu.net/fullchain.pem /etc/nginx/files/fullchain.pem;
+#COPY /etc/letsencrypt/live/kdsu.net/privkey.pem /etc/nginx/files/privkey.pem;
+#COPY /etc/letsencrypt/ssl-dhparams.pem /etc/nginx/files/ssl-dhparams.pem;
+
+COPY nginx.conf /etc/nginx/nginx.conf
